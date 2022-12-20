@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
 
+// get tasks from BD and append to DOM.
 router.get("/", (req, res) => {
 	let queryText = `SELECT * from "to-dos"`;
 	pool.query(queryText).then((result) => {
@@ -14,6 +15,7 @@ router.get("/", (req, res) => {
 	// });
 });
 
+// post new task route.
 router.post("/", (req, res) => {
 	const newToDo = req.body;
 	const queryText = `
@@ -26,6 +28,7 @@ router.post("/", (req, res) => {
 	});
 });
 
+// delete route.
 router.delete("/:id", (req, res) => {
 	console.log("delete request", req.params.id);
 	const queryText = `DELETE from "to-dos" WHERE id = ${req.params.id};`;

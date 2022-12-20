@@ -1,12 +1,18 @@
 $(document).ready(onReady);
 
 function onReady() {
+	// A // post new item to database.
 	$("#add-to-do").on("click", postToDoTask);
 
-	$("#to-do-table-body").on("click", ".delete", deleteRow);
+	// B // function that will display items from database.
 	displayTasks();
+
+	// D // function to delete a row from table.
+	$("#to-do-table-body").on("click", ".delete", deleteRow);
 }
 
+// A //
+// function that adds new item to database.
 function postToDoTask() {
 	console.log("clicking");
 	let toDoTask = {
@@ -18,11 +24,19 @@ function postToDoTask() {
 		data: toDoTask,
 	}).then(function (response) {
 		console.log(response);
+
+		// B //
+		// function that displays tasks added by user.
 		displayTasks();
+
+		// C //
+		// clear user inputs.
 		clearInputs();
 	});
 }
 
+// B //
+// function that grabs and appends items on to DOM.
 function displayTasks() {
 	$("#to-do-table-body").empty();
 	console.log("working!");
@@ -46,13 +60,17 @@ function displayTasks() {
 	});
 }
 
+// C //
+// clear user inputs.
 function clearInputs() {
 	$("#user-input-text").val("");
 }
 
+// D //
+// function to delete row by id from table.
 function deleteRow() {
 	console.log("hello from delete");
-	console.log($(this).data('id'));
+	console.log($(this).data("id"));
 	const id = $(this).data("id");
 	$.ajax({
 		type: "DELETE",
