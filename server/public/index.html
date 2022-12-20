@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>To Do List</title>
+		<script src="vendors/jquery.js"></script>
+		<script src="scripts/client.js"></script>
+		<link rel="stylesheet" href="styles/styles.css" />
+	</head>
+	<body>
+		<h1>To Do List</h1>
+		<div>
+			<input id="user-input-text" type="text" placeholder="Create new task" />
+			<button id='add-to-do'>Add</button>
+		</div>
+		<div>
+			<table id="tableWrapper">
+				<thead>
+					<tr>
+						<th>Task</th>
+                        <th>Completed?</th>
+                        <th>Button</th>
+					</tr>
+                    <tbody id='to-do-table-body'></tbody>
+				</thead>
+			</table>
+		</div>
+	</body>
+</html>
