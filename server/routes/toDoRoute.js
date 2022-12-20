@@ -27,13 +27,18 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-	let id = req.params.id;
-	console.log("delete request", id);
-	const queryText = `DELETE from "to-dos" WHERE  task = ${req.params.id};`;
-	pool.query(queryText).then((result) => {
-		console.log("deleted!");
-		res.send(result.rows);
-	});
+	console.log("delete request", req.params.id);
+	const queryText = `DELETE from "to-dos" WHERE id = ${req.params.id};`;
+	pool
+		.query(queryText)
+		.then((result) => {
+			console.log(result);
+			res.sendStatus(202);
+		})
+		.catch((error) => {
+			console.log("error", error);
+			res.sendStatus(500);
+		});
 });
 
 module.exports = router;

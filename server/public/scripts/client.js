@@ -52,15 +52,16 @@ function clearInputs() {
 
 function deleteRow() {
 	console.log("hello from delete");
-	// const id = $(this).parent().parent().data("id");
-	// $.ajax({
-	// 	type: "DELETE",
-	// 	url: `/toDoList/${id}`,
-	// })
-	// 	.then(function () {
-	// 		displayTasks();
-	// 	})
-	// 	.catch(function (error) {
-	// 		console("deleting error occurred", error);
-	// 	});
+	console.log($(this).data('id'));
+	const id = $(this).data("id");
+	$.ajax({
+		type: "DELETE",
+		url: `/toDoList/${id}`,
+	})
+		.then(function () {
+			displayTasks();
+		})
+		.catch(function (error) {
+			console("deleting error occurred", error);
+		});
 }
