@@ -1,7 +1,7 @@
 $(document).ready(onReady);
 
 function onReady() {
-	// A // post new item to database.
+	// A // post new item from user to database.
 	$("#add-to-do").on("click", postToDoTask);
 
 	// B // function that will display items from database.
@@ -89,4 +89,12 @@ function deleteRow() {
 
 function completeTask() {
 	console.log("clicking!");
+	console.log($(this).data("id"));
+	const id = $(this).data("id");
+	$.ajax({
+		type: "GET",
+		url: `/toDoList/${id}`,
+	});
 }
+
+//  WORK ON COMPETE TASK FUNCTION. GET ?? //

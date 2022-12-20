@@ -5,14 +5,16 @@ const pool = require("../modules/pool");
 // get tasks from BD and append to DOM.
 router.get("/", (req, res) => {
 	let queryText = `SELECT * from "to-dos"`;
-	pool.query(queryText).then((result) => {
-		console.log("results from database!", result);
-		res.send(result.rows);
-	});
-	// .catch((error) => {
-	// 	console.log("no connection to database", error);
-	// 	res.sendStatus(500);
-	// });
+	pool
+		.query(queryText)
+		.then((result) => {
+			console.log("results from database!", result);
+			res.send(result.rows);
+		})
+		.catch((error) => {
+			console.log("no connection to database", error);
+			res.sendStatus(500);
+		});
 });
 
 // post new task route.
