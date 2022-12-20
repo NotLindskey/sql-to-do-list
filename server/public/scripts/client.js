@@ -9,6 +9,9 @@ function onReady() {
 
 	// D // function to delete a row from table.
 	$("#to-do-table-body").on("click", ".delete", deleteRow);
+
+	// F // function to complete a task
+	$("#to-do-table-body").on("click", ".task-completed", completeTask);
 }
 
 // A //
@@ -50,7 +53,7 @@ function displayTasks() {
             <tr></tr>
                 <td>${response[i].task}</td>
                 <td>
-                    <button>Complete</button>
+                    <button class='task-completed' data-id=${response[i].id}>Complete</button>
                 </td>
                 <td>
                     <button class="delete" data-id=${response[i].id}>Delete</button>
@@ -82,4 +85,8 @@ function deleteRow() {
 		.catch(function (error) {
 			console("deleting error occurred", error);
 		});
+}
+
+function completeTask() {
+	console.log("clicking!");
 }
